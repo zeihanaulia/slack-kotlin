@@ -1,2 +1,3 @@
 # slack-kotlin
-Learn a new language for me. create slack app using kolin + android
+
+Belajar Kotlin + Android. Dengan membuat aplikasi yang menggunakan API slack.
