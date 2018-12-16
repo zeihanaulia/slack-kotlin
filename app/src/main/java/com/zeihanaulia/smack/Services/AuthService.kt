@@ -1,6 +1,7 @@
 package com.zeihanaulia.smack.Services
 
 import android.content.Context
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -19,8 +20,15 @@ object AuthService {
         val requestBody = jsonBody.toString()
 
         val registerRequest = object : StringRequest(Request.Method.POST, url,
-            Response.Listener { _ -> complete(true) },
-            Response.ErrorListener { error -> complete(true)}){
+            Response.Listener { response ->
+                println(response)
+                complete(true)
+            },
+            Response.ErrorListener { error ->
+                println(error)
+                complete(true)
+            }){
+
             override fun getBodyContentType(): String{
                 return "application/json; charset=utf-8"
             }
@@ -29,6 +37,7 @@ object AuthService {
             }
         }
 
+        //registerRequest.setRetryPolicy(DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
         Volley.newRequestQueue(context).add(registerRequest)
     }
 }
