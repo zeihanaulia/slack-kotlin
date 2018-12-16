@@ -1,9 +1,11 @@
-package com.zeihanaulia.smack
+package com.zeihanaulia.smack.Controllers
 
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.zeihanaulia.smack.R
+import com.zeihanaulia.smack.Services.AuthService
 import kotlinx.android.synthetic.main.activity_create_user.*
 import java.util.*
 
@@ -45,8 +47,15 @@ class CreateUserActivity : AppCompatActivity() {
         val savedB = b.toDouble() / 255
 
         avatarColor = "[$savedR, $savedG, $savedB, 1]"
-        
+
     }
 
-    fun createUserClicked(biew: View){}
+    fun createUserClicked(view: View){
+        AuthService.registerUser(this, "j@j.com", "1234567"){ complete ->
+            if (complete) {
+
+            }
+
+        }
+    }
 }
