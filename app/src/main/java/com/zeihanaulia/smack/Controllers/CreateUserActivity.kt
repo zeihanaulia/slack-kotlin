@@ -58,9 +58,14 @@ class CreateUserActivity : AppCompatActivity() {
         println(email)
         println(password)
 
-        AuthService.registerUser(this, email, password){ complete ->
-            if (complete) {
-
+        AuthService.registerUser(this, email, password){ registerSuccess ->
+            if (registerSuccess) {
+                AuthService.loginUser(this, email, password){ loginSuccess ->
+                    if (loginSuccess){
+                        println(AuthService.authToken)
+                        println(AuthService.userEmail)
+                    }
+                }
             }
         }
     }
