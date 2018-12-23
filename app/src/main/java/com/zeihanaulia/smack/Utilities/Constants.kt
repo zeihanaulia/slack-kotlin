@@ -6,6 +6,7 @@ const val BASE_URL = "https://d9b1062a.ngrok.io/v1/"
 const val URL_REGISTER = "${BASE_URL}account/register"
 const val URL_LOGIN = "${BASE_URL}account/login"
 const val URL_CREATE_USER = "${BASE_URL}user/add"
+const val URL_GET_USER = "${BASE_URL}user/byEmail/"
 
 // Broadcast content
 
